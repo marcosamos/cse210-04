@@ -10,17 +10,17 @@ Rules Greed is played according to the following rules.
 * If the player touches a gem they earn a point. If the player touches a rock they lose a point. 
 * Gems and rocks are removed when the player touches them. The game continues until the player closes the window.
 ## Requirements:
-The program must have a README file. 
-The program must have at least eight classes. 
-Each module, class and method must have a corresponding comment. 
-The game must remain generally true to the order of play described earlier. 
+* The program must have a README file. 
+* The program must have at least eight classes. 
+* Each module, class and method must have a          corresponding comment. 
+* The game must remain generally true to the order of play described earlier. 
 
 ## Project Structure
 The project files and folder are oganized as follows:
----
+
 ## Required Technologies
 Python 3.8.0
----
+
 ## Authors:
 * Jared McKay (mck21022@byui.edu)
 * Chanae Ransom (ran21021@byui.edu)
