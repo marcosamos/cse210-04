@@ -22,7 +22,7 @@ FONT_SIZE = 15
 COLS = 60
 ROWS = 40
 CAPTION = "Robot Finds Kitten"
-DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt"
+DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt" #may not be needed as had to do with the msg sytem 
 WHITE = Color(255, 255, 255)
 DEFAULT_ARTIFACTS = 40
 
@@ -40,11 +40,12 @@ def main():
     banner.set_position(Point(CELL_SIZE, 0))
     cast.add_actor("banners", banner)
     
-    # create the robot
+    # create the robot in the middle of the board
     x = int(MAX_X / 2)
     y = int(MAX_Y / 2)
     position = Point(x, y)
 
+    #robot is the player on the screen
     robot = Actor()
     robot.set_text("#")
     robot.set_font_size(FONT_SIZE)
@@ -52,13 +53,13 @@ def main():
     robot.set_position(position)
     cast.add_actor("robots", robot)
     
-    # create the artifacts
+    # create the artifacts this will will not be needed as was used for msgs
     with open(DATA_PATH) as file:
         data = file.read()
         messages = data.splitlines()
 
     for n in range(DEFAULT_ARTIFACTS):
-        text = chr(random.randint(33, 126))
+        text = chr(random.randint(33, 126))  ## used to assign messages to artifacts - not needed for greed
         message = messages[n]
 
         x = random.randint(1, COLS - 1)
@@ -66,17 +67,17 @@ def main():
         position = Point(x, y)
         position = position.scale(CELL_SIZE)
 
-        r = random.randint(0, 255)
+        r = random.randint(0, 255) 
         g = random.randint(0, 255)
         b = random.randint(0, 255)
         color = Color(r, g, b)
         
         artifact = Artifact()
-        artifact.set_text(text)
-        artifact.set_font_size(FONT_SIZE)
+        artifact.set_text(text) # not needed for greed
+        artifact.set_font_size(FONT_SIZE) 
         artifact.set_color(color)
         artifact.set_position(position)
-        artifact.set_message(message)
+        artifact.set_message(message) ## may not be needed
         cast.add_actor("artifacts", artifact)
     
     # start the game

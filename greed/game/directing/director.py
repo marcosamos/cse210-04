@@ -58,7 +58,7 @@ class Director:
         
         for artifact in artifacts:
             if robot.get_position().equals(artifact.get_position()):
-                message = artifact.get_message()
+                message = artifact.get_message() ## changed for getting points not msg
                 banner.set_text(message)    
         
     def _do_outputs(self, cast):

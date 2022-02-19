@@ -1,3 +1,9 @@
+# ### used to provide message over artifacts - 
+# will be used to add up points from gem or rocks
+
+
+
+
 from game.casting.actor import Actor
 
 
