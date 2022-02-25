@@ -18,7 +18,7 @@ class Actor:
 
     def __init__(self):
         """Constructs a new Actor."""
-        self._text = ""
+        self._points = 0
         self._font_size = 15
         self._color = Color(255, 255, 255)
         self._position = Point(0, 0)
@@ -48,13 +48,13 @@ class Actor:
         """
         return self._position
     
-    def get_text(self):
+    def get_points(self):
         """Gets the actor's textual representation.
         
         Returns:
             string: The actor's textual representation.
         """
-        return self._text
+        return self._points
 
     def get_velocity(self):
         """Gets the actor's speed and direction.
@@ -100,13 +100,13 @@ class Actor:
         """
         self._font_size = font_size
     
-    def set_text(self, text):
+    def set_points(self, points):
         """Updates the text to the given value.
         
         Args:
             text (string): The given value.
         """
-        self._text = text
+        self._points = points
 
     def set_velocity(self, velocity):
         """Updates the velocity to the given one.

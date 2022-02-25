@@ -34,7 +34,7 @@ def main():
     
     # create the banner
     banner = Actor()
-    banner.set_text("")
+    banner.set_points(0)
     banner.set_font_size(FONT_SIZE)
     banner.set_color(WHITE)
     banner.set_position(Point(CELL_SIZE, 0))
@@ -47,20 +47,20 @@ def main():
 
     #robot is the player on the screen
     robot = Actor()
-    robot.set_text("#")
+    robot.set_points(0)
     robot.set_font_size(FONT_SIZE)
     robot.set_color(WHITE)
     robot.set_position(position)
     cast.add_actor("robots", robot)
     
     # create the artifacts this will will not be needed as was used for msgs
-    with open(DATA_PATH) as file:
-        data = file.read()
-        messages = data.splitlines()
+    # with open(DATA_PATH) as file:
+    #     data = file.read()
+    #     messages = data.splitlines()
 
     for n in range(DEFAULT_ARTIFACTS):
-        text = chr(random.randint(33, 126))  ## used to assign messages to artifacts - not needed for greed
-        message = messages[n]
+    #     text = chr(random.randint(33, 126))  ## used to assign messages to artifacts - not needed for greed
+    #     message = messages[n]
 
         x = random.randint(1, COLS - 1)
         y = random.randint(1, ROWS - 1)
@@ -73,11 +73,11 @@ def main():
         color = Color(r, g, b)
         
         artifact = Artifact()
-        artifact.set_text(text) # not needed for greed
+        # artifact.set_text(text) # not needed for greed
         artifact.set_font_size(FONT_SIZE) 
         artifact.set_color(color)
         artifact.set_position(position)
-        artifact.set_message(message) ## may not be needed
+        artifact.set_message(pointplus=0) ## may not be needed
         cast.add_actor("artifacts", artifact)
     
     # start the game
