@@ -1,3 +1,12 @@
+import random
+from tkinter import Y
+from turtle import color, position
+from game.shared.color import Color
+from game.shared.point import Point
+from game.shared.velocity import Velocity
+from game.casting.rock import Rock
+from game.casting.gem import Gems
+
 class Director:
     """A person who directs the game. 
     
@@ -37,9 +46,9 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """
-        robot = cast.get_first_actor("robots")
+        player = cast.get_first_actor("player")
         velocity = self._keyboard_service.get_direction()
-        robot.set_velocity(velocity)        
+        player.set_velocity(velocity)        
 
     def _do_updates(self, cast):
         """Updates the robot's position and resolves any collisions with artifacts.
@@ -47,21 +56,68 @@ class Director:
         Args:
             cast (Cast): The cast of actors.
         """
-        banner = cast.get_first_actor("banners")
-        robot = cast.get_first_actor("robots")
-        artifacts = cast.get_actors("artifacts")
+        score = cast.get_first_actor("score")
+        player = cast.get_first_actor("player")
+        gem = cast.get_actors("gem")
         rock = cast.get_actors("rocks")
 
-        banner.set_points(0)
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
-        robot.move_next(max_x, max_y)
+        player.move_next(max_x, max_y)
         
-        for artifact in artifacts:
-            if robot.get_position().equals(artifact.get_position()):
-                points = artifact.get_message() ## changed for getting points not msg
+        for gem in gems:
+            if player.get_position().equals(gem.get_position()):
+                player.score_gem()
+                score.set_score(f"Score: {player.get_score()}")
+                cast.remove_actor("gems", gem)
+            gem.move_next(max_x, max_y)
 
-                banner.set_points(points)    
+        for rock in rocks:
+            if player.get_position().equals(rock.get_position()):
+                player.score_rock()
+                score.set_score(f"Score: {player.get_score()}")
+                cast.remove_actor("rocks", rock) 
+            rock.move_next(max_x, max_y)       
+        
+        def rock_create(self, cast):
+            x = random.randint(1, 60 -1)
+            y = random.randint(1, 40 -1)
+            position = Point(x, y)
+            position = position.scale(15)
+            velocity = velocity (0, 1)
+
+            r = random.randint(100, 200)
+            g = random.randint(100, 200)
+            b = random.randint(100, 200)
+            color = Color(r, g, b)
+
+            rock = Rock()
+            rock.set_text("0")
+            rock.set_font_size(15)
+            rock.set_color(color)
+            rock.set_position(position)
+            rock.set_velocity(velocity)
+            cast.add_actor("rocks", rock)
+
+        def gem_create(self, cast):
+            x = random.randint(1, 50 -1)
+            y = random.randint(1, 40 -1)
+            position = Point(x, y)
+            position = position.scale(15)
+            velocity = velocity (0, 1)
+
+            r = random.randint(100, 200)
+            g = random.randint(100, 200)
+            b = random.randint(100, 200)
+            color = Color(r, g, b)
+
+            gem = Gem()
+            gem.set_text("*")
+            gem.set_font_size(15)
+            gem.set_color(color)
+            gem.set_position(position)
+            gem.set_velocity(velocity)
+            cast.add_actor("gems", gem)
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
