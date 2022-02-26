@@ -2,7 +2,7 @@ import os
 import random
 
 from game.casting.actor import Actor
-from game.casting.artifact import Artifact
+from game.casting.gem import Gem
 from game.casting.cast import Cast
 
 from game.directing.director import Director
@@ -21,7 +21,7 @@ CELL_SIZE = 15
 FONT_SIZE = 15
 COLS = 60
 ROWS = 40
-CAPTION = "Robot Finds Kitten"
+CAPTION = "Greed"
 DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt" #may not be needed as had to do with the msg sytem 
 WHITE = Color(255, 255, 255)
 DEFAULT_ARTIFACTS = 40
