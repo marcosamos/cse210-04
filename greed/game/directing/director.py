@@ -6,6 +6,8 @@ from game.shared.point import Point
 from game.shared.velocity import Velocity
 from game.casting.rock import Rock
 from game.casting.gem import Gem
+from game.casting.actor import Actor
+from game.services.keyboard_service import KeyboardService
 
 class Director:
     """A person who directs the game. 
