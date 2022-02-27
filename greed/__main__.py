@@ -15,7 +15,7 @@ from game.services.video_service import VideoService
 
 from game.shared.color import Color
 from game.shared.point import Point
-from greed.game.shared.velocity import Velocity
+from game.shared.velocity import Velocity
 
 
 FRAME_RATE = 12
@@ -40,7 +40,7 @@ def main():
     
     # create the score
     score = Actor()
-    score.set_points(0)
+    score.set_text(0)
     score.set_font_size(FONT_SIZE)
     score.set_color(WHITE)
     score.set_position(Point(CELL_SIZE, 0))
@@ -53,7 +53,7 @@ def main():
 
     #player is the player on the screen
     player = Actor()
-    player.set_score("Score: 0")
+    player.set_text("#")
     player.set_font_size(FONT_SIZE)
     player.set_color(WHITE)
     player.set_position(position)
@@ -83,7 +83,7 @@ def main():
         rock.set_color(color)
         rock.set_position(position)
         rock.set_velocity(velocity)
-        cast.add_actor("rocks", rock)
+        cast.add_actor("rock", rock)
 
     for n in range(DEFAULT_GEMS):
 
@@ -104,7 +104,7 @@ def main():
         gem.set_color(color)
         gem.set_position(position)
         gem.set_velocity(velocity)
-        cast.add_actor("gems", gem)
+        cast.add_actor("gem", gem)
     
     # start the game
     keyboard_service = KeyboardService(CELL_SIZE)
