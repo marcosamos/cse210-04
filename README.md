@@ -34,4 +34,4 @@ Python 3.8.0
 * Jared McKay (mck21022@byui.edu)
 * Chanae Ransom (ran21021@byui.edu)
 * Collin Horomba ()
-* Marco Samos (ucs21001@byui.edu)
+* Marcos Uc (ucs21001@byui.edu)
