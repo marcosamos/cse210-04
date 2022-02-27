@@ -1,5 +1,6 @@
 import pyray
 from game.shared.point import Point
+from game.shared.velocity import Velocity
 
 
 class KeyboardService:
@@ -41,7 +42,7 @@ class KeyboardService:
         if pyray.is_key_down(pyray.KEY_DOWN):
              dy = 1
 
-        direction = Point(dx, dy)
-        direction = direction.scale(self._cell_size)
+        direction = Velocity(dx, dy)
+        direction = direction.moveob(self._cell_size)
         
         return direction

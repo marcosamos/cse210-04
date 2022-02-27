@@ -5,7 +5,7 @@ from game.shared.color import Color
 from game.shared.point import Point
 from game.shared.velocity import Velocity
 from game.casting.rock import Rock
-from game.casting.gem import Gems
+from game.casting.gem import Gem
 
 class Director:
     """A person who directs the game. 
@@ -59,20 +59,20 @@ class Director:
         score = cast.get_first_actor("score")
         player = cast.get_first_actor("player")
         gem = cast.get_actors("gem")
-        rock = cast.get_actors("rocks")
+        rock = cast.get_actors("rock")
 
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         player.move_next(max_x, max_y)
         
-        for gem in gems:
+        for gem in gem:
             if player.get_position().equals(gem.get_position()):
                 player.score_gem()
                 score.set_score(f"Score: {player.get_score()}")
                 cast.remove_actor("gems", gem)
             gem.move_next(max_x, max_y)
 
-        for rock in rocks:
+        for rock in rock:
             if player.get_position().equals(rock.get_position()):
                 player.score_rock()
                 score.set_score(f"Score: {player.get_score()}")
